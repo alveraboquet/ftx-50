@@ -7,4 +7,11 @@ defmodule FTX.Futures do
     |> HTTPoison.get()
     |> FTX.handle_response()
   end
+
+  def get_funding_rate(future) when is_binary(future) do
+    "/funding_rates"
+    |> FTX.build_url
+    |> HTTPoison.get([], [params: [future: future]])
+    |> FTX.handle_response
+  end
 end
