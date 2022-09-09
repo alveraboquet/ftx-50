@@ -22,4 +22,11 @@ defmodule FTX.Futures do
     |> HTTPoison.get([], params: [future: future])
     |> FTX.handle_response()
   end
+
+  def get_funding_rates do
+    "/funding_rates"
+    |> FTX.build_url()
+    |> HTTPoison.get()
+    |> FTX.handle_response()
+  end
 end
